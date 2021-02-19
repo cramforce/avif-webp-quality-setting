@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "forever --watch --watchDirectory ./data --watchDirectory ./scripts  scripts/generate-html.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cramforce/avif-webp-quality-setting#readme",
   "dependencies": {
+    "forever": "^3.0.4",
     "sharp": "^0.27.1"
   }
 }
