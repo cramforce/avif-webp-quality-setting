@@ -20,6 +20,7 @@ const html = `<!doctype html>
 <link rel="preload" as="fetch" href="./data/image-quality.json" crossorigin>
 <link rel="stylesheet" href="./styles.css"/>
 <script defer src="./ui.js"></script>
+<link type="image/png" rel="icon" href="https://www.industrialempathy.com/img/favicon/favicon-192x192.png?hash=2089033c93">
 <body>
 <article>
 <h2>AVIF and WebP quality settings picker</h2>
