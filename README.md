@@ -1,0 +1,1 @@
+# avif-webp-quality-setting
