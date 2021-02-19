@@ -22,13 +22,24 @@ const html = `<!doctype html>
 <script defer src="./ui.js"></script>
 <body>
 <article>
+<h2>AVIF and WebP quality settings picker</h2>
+
+<p>
+  This tool allows picking the right quality setting for encoding AVIF and 
+  WebP images such that their quality matches the quality of a JPEG of a given
+  quality setting. By default the tool will <b>automatically</b> pick the quality
+  setting such that the visual difference (as determined by 
+  <a href="https://github.com/kornelski/dssim" target="_blank">dssim</a>) is no worse 
+  than the JPEG is from the source image.
+</p>
+
 <h3>Image options</h3>
 <select id="sample" aria-label="Sample image" onchange="loadImages()">
 ${Object.keys(reference).map((sample) => {
-  return `<option value="${sample}">${sample.replace(
-    "./quality-samples/",
-    ""
-  )}</option>`;
+  const name = sample.replace("./quality-samples/", "");
+  return `<option ${
+    name == "sample1.jpg" ? "selected" : ""
+  } value="${sample}">${name}</option>`;
 })}
 </select>
 <select id="width" aria-label="Image width" onchange="loadImages()">
@@ -72,14 +83,17 @@ ${Object.keys(pick(pick(pick(reference)))).map((sample) => {
       <td id="referenceImage" aria-label="Reference image"></td>
       <td id="formatImage" aria-label="Image with selected options"></td>
     </tr>
-  <table>
+  </table>
   <dl>
     <dt>Size reduction compared to JPEG</dt>
     <dd id="sizeReduction"></dd>
-    <dt><a href="https://github.com/kornelski/dssim" target="_blank">DSSIM similarity to JPEG</a></dt>
+    <dt>DSSIM similarity to source image</dt>
     <dd id="dssim"></dd>
   </dl>
 </div>
+<p>
+  <a href="https://www.industrialempathy.com/" target="_top">Made by Malte Ubl</a>
+</p>
 </article>
 </body>`;
 
