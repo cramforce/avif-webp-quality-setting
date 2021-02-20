@@ -34,7 +34,7 @@ const html = `<!doctype html>
   than the JPEG is from the source image.
 </p>
 
-<p>For additional context and detail, <a href="https://www.industrialempathy.com/posts/avif-webp-quality-settings/">check out my accompanying blog post.</a></p>
+<p>For additional context and detail, <a href="https://www.industrialempathy.com/posts/avif-webp-quality-settings/">check out my accompanying blog post</a> and <a href="https://github.com/cramforce/avif-webp-quality-setting">the open source project for generating the underlying data</a>.</p>
 
 <h3>Image options</h3>
 <select id="sample" aria-label="Sample image" onchange="loadImages()">
