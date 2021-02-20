@@ -25,7 +25,7 @@ function generate(filename, isEmbed) {
 <body>
 ${
   isEmbed
-    ? "<article><style>article,body{padding:0!important}</style>"
+    ? "<article>"
     : `
 <header>
   <nav>
