@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+  <title>AVIF and WebP image quality settings</title>
+</head>
+<link rel="preload" as="fetch" href="./data/image-quality-reference.json" crossorigin>
+<link rel="preload" as="fetch" href="./data/image-quality.json" crossorigin>
+<link rel="stylesheet" href="./styles.css"/>
+<script defer src="./ui.js"></script>
+<link type="image/png" rel="icon" href="https://www.industrialempathy.com/img/favicon/favicon-192x192.png?hash=2089033c93">
+<body>
+<article><style>article,body{padding:0!important}</style>
+<h3>Image options</h3>
+<select id="sample" aria-label="Sample image" onchange="loadImages()">
+<option  value="./quality-samples/sample0.jpg">sample0.jpg</option>,<option selected value="./quality-samples/sample1.jpg">sample1.jpg</option>,<option  value="./quality-samples/sample2.jpg">sample2.jpg</option>,<option  value="./quality-samples/sample3.jpg">sample3.jpg</option>
+</select>
+<select id="width" aria-label="Image width" onchange="loadImages()">
+<option  value="160">160px width</option>,<option  value="320">320px width</option>,<option selected value="640">640px width</option>,<option  value="1280">1280px width</option>,<option  value="1920">1920px width</option>
+</select>
+<select id="quality" aria-label="JPEG reference quality setting" onchange="loadImages()">
+<option  value="50">50 JPEG quality</option>,<option selected value="60">60 JPEG quality</option>,<option  value="70">70 JPEG quality</option>,<option  value="80">80 JPEG quality</option>
+</select>
+<select id="format" aria-label="Image format" onchange="loadImages()">
+<option value="webp">WEBP</option>,<option value="avif">AVIF</option>
+</select>
+<select id="formatQuality" aria-label="Format quality" onchange="loadImages()">
+  <option value="BEST">Best match for JPEG quality</option>
+  <option value="10">Quality 10</option>,<option value="15">Quality 15</option>,<option value="20">Quality 20</option>,<option value="25">Quality 25</option>,<option value="30">Quality 30</option>,<option value="35">Quality 35</option>,<option value="40">Quality 40</option>,<option value="45">Quality 45</option>,<option value="50">Quality 50</option>,<option value="55">Quality 55</option>,<option value="60">Quality 60</option>,<option value="65">Quality 65</option>,<option value="70">Quality 70</option>,<option value="75">Quality 75</option>,<option value="80">Quality 80</option>,<option value="85">Quality 85</option>,<option value="90">Quality 90</option>,<option value="95">Quality 95</option>,<option value="100">Quality 100</option>
+</select>
+<select id="dpi" aria-label="DPI" onchange="loadImages()">
+  <option value="1">1x DPI</option>
+  <option selected value="2">2x DPI</option>
+  <option value="3">3x DPI</option>
+</select>
+<div id="output" style="display:none" aria-live="polite">
+  <h3 id="images">Images</h3>
+  <table aria-labelledby="images">
+    <tr>
+      <th id="referenceHeader"></th>
+      <th id="formatHeader"></th>
+    </tr>
+    <tr>
+      <td id="referenceImage" aria-label="Reference image"></td>
+      <td id="formatImage" aria-label="Image with selected options"></td>
+    </tr>
+  </table>
+  <dl>
+    <dt>Size reduction compared to JPEG</dt>
+    <dd id="sizeReduction"></dd>
+    <dt>DSSIM similarity to source image</dt>
+    <dd id="dssim"></dd>
+  </dl>
+</div>
+
+</article>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141920860-1"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-141920860-1');</script>
+</body>
