@@ -23,6 +23,17 @@ async function getData() {
   };
 }
 
+function updateDimensions() {
+  if (parent != window) {
+    parent.postMessage(
+      {
+        height: document.body.offsetHeight,
+      },
+      "*"
+    );
+  }
+}
+
 const dataPromise = getData();
 
 async function loadImages() {
@@ -60,14 +71,9 @@ async function loadImages() {
     "formatImage"
   ).innerHTML = `<img width="${realWidth}" height=${realHeight} src="${formatUrl}">`;
   $("output").style.display = "block";
-  if (parent != window) {
-    parent.postMessage(
-      {
-        height: document.body.offsetHeight,
-      },
-      "*"
-    );
-  }
+  updateDimensions();
 }
 
 loadImages();
+
+window.onresize = updateDimensions;
