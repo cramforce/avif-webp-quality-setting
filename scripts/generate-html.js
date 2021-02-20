@@ -22,6 +22,13 @@ const html = `<!doctype html>
 <script defer src="./ui.js"></script>
 <link type="image/png" rel="icon" href="https://www.industrialempathy.com/img/favicon/favicon-192x192.png?hash=2089033c93">
 <body>
+<header>
+  <nav>
+    <div id="nav">
+      <h1><a title="Homepage" href="https://www.industrialempathy.com/">Industrial Empathy</a></h1>
+      <a href="https://www.industrialempathy.com/posts/avif-webp-quality-settings/">Context</a></div>
+  </nav>
+</header>
 <article>
 <h2>AVIF and WebP quality settings picker</h2>
 
