@@ -60,6 +60,14 @@ async function loadImages() {
     "formatImage"
   ).innerHTML = `<img width="${realWidth}" height=${realHeight} src="${formatUrl}">`;
   $("output").style.display = "block";
+  if (parent != window) {
+    parent.postMessage(
+      {
+        height: document.body.offsetHeight,
+      },
+      "*"
+    );
+  }
 }
 
 loadImages();

@@ -12,7 +12,8 @@ for (let q = 10; q <= 100; q += 5) {
   qualities.push(q);
 }
 
-const html = `<!doctype html>
+function generate(filename, isEmbed) {
+  const html = `<!doctype html>
 <head>
   <title>AVIF and WebP image quality settings</title>
 </head>
@@ -22,6 +23,10 @@ const html = `<!doctype html>
 <script defer src="./ui.js"></script>
 <link type="image/png" rel="icon" href="https://www.industrialempathy.com/img/favicon/favicon-192x192.png?hash=2089033c93">
 <body>
+${
+  isEmbed
+    ? "<article><style>article,body{padding:0!important}</style>"
+    : `
 <header>
   <nav>
     <div id="nav">
@@ -42,7 +47,8 @@ const html = `<!doctype html>
 </p>
 
 <p>For additional context and detail, <a href="https://www.industrialempathy.com/posts/avif-webp-quality-settings/">check out my accompanying blog post</a> and <a href="https://github.com/cramforce/avif-webp-quality-setting">the open source project for generating the underlying data</a>.</p>
-
+`
+}
 <h3>Image options</h3>
 <select id="sample" aria-label="Sample image" onchange="loadImages()">
 ${Object.keys(reference).map((sample) => {
@@ -101,12 +107,21 @@ ${Object.keys(pick(pick(pick(reference)))).map((sample) => {
     <dd id="dssim"></dd>
   </dl>
 </div>
+${
+  isEmbed
+    ? ""
+    : `
 <p>
   <a href="https://www.industrialempathy.com/" target="_top">Made by Malte Ubl</a>
-</p>
+</p>`
+}
 </article>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141920860-1"></script>
 <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-141920860-1');</script>
 </body>`;
 
-require("fs").writeFileSync("./index.html", html);
+  require("fs").writeFileSync(`./${filename}`, html);
+}
+
+generate("index.html");
+generate("embed.html", true /* isEmbed */);
