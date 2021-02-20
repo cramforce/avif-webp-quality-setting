@@ -69,7 +69,7 @@ async function loadImages() {
   ).textContent = `${format.toUpperCase()} image at quality ${formatQuality}`;
   $(
     "formatImage"
-  ).innerHTML = `<img width="${realWidth}" height=${realHeight} src="${formatUrl}">`;
+  ).innerHTML = `<img width="${realWidth}" height=${realHeight} src="${formatUrl}" onerror="alert('Your browser may not yet support ${format.toUpperCase()} images.')">`;
   $("output").style.display = "block";
   updateDimensions();
 }
